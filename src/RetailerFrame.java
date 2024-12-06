@@ -26,6 +26,17 @@ public class RetailerFrame extends JFrame {
         //TODO: Display the current inventory on the bottom of the window maybe?
 
         // Allow the Manage Inventory button to open the Manage Inventory page
+        surplusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginFrame.setVisible(false);
+
+                SurplusFrame surplusFrame = new SurplusFrame(loginFrame);
+                surplusFrame.setVisible(true);
+            }
+        });
+
+        // Allow the Manage Inventory button to open the Manage Inventory page
         manageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

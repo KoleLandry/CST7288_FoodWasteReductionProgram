@@ -13,7 +13,7 @@ public class UpdateFrame extends JFrame {
 
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: ");
+        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
         JTextField enterItemName = new JTextField(10);
 
         // Create the item quantity panel
@@ -38,7 +38,7 @@ public class UpdateFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 loginFrame.setVisible(false);
 
-                //TODO: Add logic to add item to the database
+                //TODO: Update item in the database
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);

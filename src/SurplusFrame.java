@@ -2,34 +2,42 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ExpFrame extends JFrame {
-    public ExpFrame(JFrame loginFrame) {
+public class SurplusFrame extends JFrame {
+    public SurplusFrame(JFrame loginFrame) {
 
         //TODO: Display username in the title of the frame
 
         // Create the frame for the login window.
-        setTitle("Set Expiration Dates - [USER_NAME_HERE]");
+        setTitle("Manage Surplus Items - [USER_NAME_HERE]");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+        // Create the surplus items panel
+        JPanel surplusPanel = new JPanel();
+        JLabel surplusTitleLabel = new JLabel("Surplus Items: ");
+        JLabel surplusItemsLabel = new JLabel(); //TODO: List array of surplus items here
+
+        // Create the title panel
+        JPanel listPanel = new JPanel();
+        JLabel listTitleLabel = new JLabel("List for donation or sale: ");
 
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
-        JTextField enterItemName = new JTextField(10);
+        JLabel itemNameLabel = new JLabel("Item Name: ");
+        JTextField enterItemName = new JTextField(10); //TODO: Verify that item exists, and that it is in surplus
 
-        // Create the item expiration date panel
-        JPanel itemExpPanel = new JPanel();
-        JLabel itemExpLabel = new JLabel("Item Expiration Date: "); //TODO: Verify that value entered is a date
-        JTextField enterItemExp = new JTextField(10);
+        //TODO: Add ability to choose to set for donation or sale
+        //TODO: Add ability to set price if for sale
 
         // Create the submit panel
         JPanel submitPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
         // Add all the details to the panels
+        surplusPanel.add(surplusTitleLabel);
+        surplusPanel.add(surplusItemsLabel);
+        listPanel.add(listTitleLabel);
         itemNamePanel.add(itemNameLabel);
         itemNamePanel.add(enterItemName);
-        itemExpPanel.add(itemExpLabel);
-        itemExpPanel.add(enterItemExp);
         submitPanel.add(submitButton);
 
         // Submit item to the database and take user back to the manage items frame
@@ -38,7 +46,7 @@ public class ExpFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 loginFrame.setVisible(false);
 
-                //TODO: Update item in the database
+                //TODO: Add logic to modify item in the database
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);
@@ -46,8 +54,9 @@ public class ExpFrame extends JFrame {
         });
 
         // Add the panels to the JFrame
+        add(surplusPanel);
+        add(listPanel);
         add(itemNamePanel);
-        add(itemExpPanel);
         add(submitPanel);
 
         setSize(800, 400); // Set the size of the window.

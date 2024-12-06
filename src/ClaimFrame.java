@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ExpFrame extends JFrame {
-    public ExpFrame(JFrame loginFrame) {
+public class ClaimFrame extends JFrame {
+    public ClaimFrame(JFrame loginFrame) {
 
         //TODO: Display username in the title of the frame
 
         // Create the frame for the login window.
-        setTitle("Set Expiration Dates - [USER_NAME_HERE]");
+        setTitle("Claim Items - [USER_NAME_HERE]");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel
@@ -16,10 +16,10 @@ public class ExpFrame extends JFrame {
         JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
         JTextField enterItemName = new JTextField(10);
 
-        // Create the item expiration date panel
-        JPanel itemExpPanel = new JPanel();
-        JLabel itemExpLabel = new JLabel("Item Expiration Date: "); //TODO: Verify that value entered is a date
-        JTextField enterItemExp = new JTextField(10);
+        // Create the item quantity panel
+        JPanel itemQuantityPanel = new JPanel();
+        JLabel itemQuantityLabel = new JLabel("Item Quantity: "); //TODO: Verify that value entered is an integer
+        JTextField enterItemQuantity = new JTextField(10);
 
         // Create the submit panel
         JPanel submitPanel = new JPanel();
@@ -28,8 +28,8 @@ public class ExpFrame extends JFrame {
         // Add all the details to the panels
         itemNamePanel.add(itemNameLabel);
         itemNamePanel.add(enterItemName);
-        itemExpPanel.add(itemExpLabel);
-        itemExpPanel.add(enterItemExp);
+        itemQuantityPanel.add(itemQuantityLabel);
+        itemQuantityPanel.add(enterItemQuantity);
         submitPanel.add(submitButton);
 
         // Submit item to the database and take user back to the manage items frame
@@ -47,7 +47,7 @@ public class ExpFrame extends JFrame {
 
         // Add the panels to the JFrame
         add(itemNamePanel);
-        add(itemExpPanel);
+        add(itemQuantityPanel);
         add(submitPanel);
 
         setSize(800, 400); // Set the size of the window.
