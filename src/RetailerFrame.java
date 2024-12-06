@@ -19,9 +19,14 @@ public class RetailerFrame extends JFrame {
         JPanel managePanel = new JPanel();
         JButton manageButton = new JButton("Manage Inventory");
 
+        // Create the back panel
+        JPanel logoutPanel = new JPanel();
+        JButton logoutButton = new JButton("Back");
+
         // Add all the details to the panels
         surplusPanel.add(surplusButton);
         managePanel.add(manageButton);
+        logoutPanel.add(logoutButton);
 
         //TODO: Display the current inventory on the bottom of the window maybe?
 
@@ -47,9 +52,21 @@ public class RetailerFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Retailer to Login
+                // TODO: Add code to logout the user
+                setVisible(false);
+                loginFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(surplusPanel);
         add(managePanel);
+        add(logoutPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.

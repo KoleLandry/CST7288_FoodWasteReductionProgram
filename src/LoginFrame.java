@@ -30,8 +30,7 @@ public class LoginFrame {
             public void actionPerformed(ActionEvent e) {
                 loginFrame.setVisible(false);
 
-                RegisterFrame registerFrame = new RegisterFrame(loginFrame);
-                registerFrame.setVisible(true);
+                new RegisterFrame(loginFrame);
             }
         });
 

@@ -23,10 +23,15 @@ public class CharOrganizationFrame extends JFrame {
         JPanel claimPanel = new JPanel();
         JButton claimButton = new JButton("Claim Food");
 
+        // Create the logout panel
+        JPanel logoutPanel = new JPanel();
+        JButton logoutButton = new JButton("Logout");
+
         // Add all the details to the panels
         subscribePanel.add(subscribeButton);
         ratePanel.add(rateButton);
         claimPanel.add(claimButton);
+        logoutPanel.add(logoutButton);
 
         // Allow the Subscribe button to open the Subscribe page
         subscribeButton.addActionListener(new ActionListener() {
@@ -61,10 +66,22 @@ public class CharOrganizationFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Charitable Organization to Login
+                // TODO: Add code to logout the user
+                setVisible(false);
+                loginFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(subscribePanel);
         add(ratePanel);
         add(claimPanel);
+        add(logoutPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.

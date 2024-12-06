@@ -23,10 +23,15 @@ public class ManageFrame extends JFrame {
         JPanel expirationPanel = new JPanel();
         JButton expirationButton = new JButton("Set Expiration Date");
 
+        // Create the back panel
+        JPanel backPanel = new JPanel();
+        JButton backButton = new JButton("Back");
+
         // Add all the details to the panels
         addPanel.add(addButton);
         updatePanel.add(updateButton);
         expirationPanel.add(expirationButton);
+        backPanel.add(backButton);
 
         //TODO: Display the current inventory on the bottom of the window maybe?
 
@@ -61,10 +66,23 @@ public class ManageFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Manage Inventory to Retailer
+                setVisible(false);
+
+                RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
+                retailerFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(addPanel);
         add(updatePanel);
         add(expirationPanel);
+        add(backPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.

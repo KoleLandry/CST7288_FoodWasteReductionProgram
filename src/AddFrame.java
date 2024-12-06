@@ -30,6 +30,10 @@ public class AddFrame extends JFrame {
         JPanel submitPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
+        // Create the back panel
+        JPanel backPanel = new JPanel();
+        JButton backButton = new JButton("Back");
+
         // Add all the details to the panels
         itemNamePanel.add(itemNameLabel);
         itemNamePanel.add(enterItemName);
@@ -38,6 +42,7 @@ public class AddFrame extends JFrame {
         itemExpPanel.add(itemExpLabel);
         itemExpPanel.add(enterItemExp);
         submitPanel.add(submitButton);
+        backPanel.add(backButton);
 
         // Submit item to the database and take user back to the manage items frame
         submitButton.addActionListener(new ActionListener() {
@@ -52,11 +57,24 @@ public class AddFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Add Items to Manage Items
+                setVisible(false);
+
+                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                manageFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(itemNamePanel);
         add(itemQuantityPanel);
         add(itemExpPanel);
         add(submitPanel);
+        add(backPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.

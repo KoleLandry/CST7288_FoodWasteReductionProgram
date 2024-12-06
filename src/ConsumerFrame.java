@@ -23,10 +23,15 @@ public class ConsumerFrame extends JFrame {
         JPanel purchasePanel = new JPanel();
         JButton purchaseButton = new JButton("Claim Food");
 
+        // Create the back panel
+        JPanel logoutPanel = new JPanel();
+        JButton logoutButton = new JButton("Logout");
+
         // Add all the details to the panels
         subscribePanel.add(subscribeButton);
         ratePanel.add(rateButton);
         purchasePanel.add(purchaseButton);
+        logoutPanel.add(logoutButton);
 
         // Allow the Subscribe button to open the Subscribe page
         subscribeButton.addActionListener(new ActionListener() {
@@ -61,10 +66,22 @@ public class ConsumerFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Consumer to Login
+                // TODO: Add code to logout the user
+                setVisible(false);
+                loginFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(subscribePanel);
         add(ratePanel);
         add(purchasePanel);
+        add(logoutPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.

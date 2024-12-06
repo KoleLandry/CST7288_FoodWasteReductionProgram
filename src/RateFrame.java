@@ -25,12 +25,17 @@ public class RateFrame extends JFrame {
         JPanel submitPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
+        // Create the back panel
+        JPanel backPanel = new JPanel();
+        JButton backButton = new JButton("Back");
+
         // Add all the details to the panels
         retailerNamePanel.add(retailerNameLabel);
         retailerNamePanel.add(enterRetailerName);
         ratePanel.add(rateLabel);
         ratePanel.add(enterRate);
         submitPanel.add(submitButton);
+        backPanel.add(backButton);
 
         // Submit item to the database and take user back to the manage items frame
         submitButton.addActionListener(new ActionListener() {
@@ -40,10 +45,27 @@ public class RateFrame extends JFrame {
             }
         });
 
+        // Allows the back button to send the user to the previous page
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Sends the user from Rate Retailers to Consumer/Char Organization
+                setVisible(false);
+
+                //TODO: If user == consumer:
+                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame);
+                consumerFrame.setVisible(true);
+                //TODO: Else if user == charOrganization:
+                //CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame);
+                //charOrganizationFrame.setVisible(true);
+            }
+        });
+
         // Add the panels to the JFrame
         add(retailerNamePanel);
         add(ratePanel);
-        add(submitButton);
+        add(submitPanel);
+        add(backPanel);
 
         setSize(800, 400); // Set the size of the window.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensure the application exits when the window is closed.
