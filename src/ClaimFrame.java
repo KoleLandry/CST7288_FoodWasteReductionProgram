@@ -13,12 +13,12 @@ public class ClaimFrame extends JFrame {
 
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
+        JLabel itemNameLabel = new JLabel("Item Name: ");
         JTextField enterItemName = new JTextField(10);
 
         // Create the item quantity panel
         JPanel itemQuantityPanel = new JPanel();
-        JLabel itemQuantityLabel = new JLabel("Item Quantity: "); //TODO: Verify that value entered is an integer
+        JLabel itemQuantityLabel = new JLabel("Item Quantity: ");
         JTextField enterItemQuantity = new JTextField(10);
 
         // Create the submit panel
@@ -41,12 +41,39 @@ public class ClaimFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
 
-                //TODO: Update item in the database
+                boolean itemNameGood = true;
+                boolean itemQuantityGood = true;
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
-                manageFrame.setVisible(true);
+                // Verify item exists
+                if (enterItemName.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Item Name cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+                    itemNameGood = false;
+                    return; // Stop further execution
+                }
+
+                // Verify that value entered is an integer
+                try {
+                    int quantity = Integer.parseInt(enterItemQuantity.getText().trim());
+                    if (quantity <= 0) {
+                        JOptionPane.showMessageDialog(null, "Quantity must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                        itemQuantityGood = false;
+                        return; // Stop further execution
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid integer for quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+                    itemQuantityGood = false;
+                    return; // Stop further execution
+                }
+
+                if (itemNameGood == true && itemQuantityGood == true) {
+                    setVisible(false);
+
+                    //TODO: Update item in the database
+
+                    ManageFrame manageFrame = new ManageFrame(loginFrame);
+                    manageFrame.setVisible(true);
+                }
             }
         });
 

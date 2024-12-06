@@ -38,10 +38,15 @@ public class LoginFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                // Validate user login input
+                boolean userValid = ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
 
-                RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
-                retailerFrame.setVisible(true);
+                if (userValid) {
+                    loginFrame.setVisible(false);
+
+                    RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
+                    retailerFrame.setVisible(true);
+                }
             }
         });
 

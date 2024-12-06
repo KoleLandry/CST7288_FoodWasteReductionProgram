@@ -41,12 +41,39 @@ public class PurchaseFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
 
-                //TODO: Update item in the database
+                boolean itemNameGood = true;
+                boolean itemQuantityGood = true;
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
-                manageFrame.setVisible(true);
+                // Verify item exists
+                if (enterItemName.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Item Name cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+                    itemNameGood = false;
+                    return;
+                }
+
+                // Verify that value entered is an integer
+                try {
+                    int quantity = Integer.parseInt(enterItemQuantity.getText().trim());
+                    if (quantity <= 0) {
+                        JOptionPane.showMessageDialog(null, "Quantity must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                        itemQuantityGood = false;
+                        return; // Stop further execution
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid integer for quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+                    itemQuantityGood = false;
+                    return; // Stop further execution
+                }
+
+                if (itemNameGood == true && itemQuantityGood == true) {
+                    setVisible(false);
+
+                    //TODO: Update item in the database
+
+                    ManageFrame manageFrame = new ManageFrame(loginFrame);
+                    manageFrame.setVisible(true);
+                }
             }
         });
 
