@@ -32,7 +32,7 @@ public class CharOrganizationFrame extends JFrame {
         subscribeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 SubscribeFrame subscribeFrame = new SubscribeFrame(loginFrame);
                 subscribeFrame.setVisible(true);
@@ -43,7 +43,7 @@ public class CharOrganizationFrame extends JFrame {
         rateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 RateFrame rateFrame = new RateFrame(loginFrame);
                 rateFrame.setVisible(true);
@@ -54,7 +54,7 @@ public class CharOrganizationFrame extends JFrame {
         claimButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 ClaimFrame claimFrame = new ClaimFrame(loginFrame);
                 claimFrame.setVisible(true);

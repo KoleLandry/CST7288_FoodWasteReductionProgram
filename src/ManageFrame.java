@@ -34,7 +34,7 @@ public class ManageFrame extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 AddFrame addFrame = new AddFrame(loginFrame);
                 addFrame.setVisible(true);
@@ -44,7 +44,7 @@ public class ManageFrame extends JFrame {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 UpdateFrame updateFrame = new UpdateFrame(loginFrame);
                 updateFrame.setVisible(true);
@@ -54,7 +54,7 @@ public class ManageFrame extends JFrame {
         expirationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 ExpFrame expFrame = new ExpFrame(loginFrame);
                 expFrame.setVisible(true);

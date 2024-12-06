@@ -44,7 +44,7 @@ public class SurplusFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 //TODO: Add logic to modify item in the database
 

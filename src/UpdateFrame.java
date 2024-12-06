@@ -36,7 +36,7 @@ public class UpdateFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 //TODO: Update item in the database
 

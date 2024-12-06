@@ -29,7 +29,7 @@ public class RetailerFrame extends JFrame {
         surplusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 SurplusFrame surplusFrame = new SurplusFrame(loginFrame);
                 surplusFrame.setVisible(true);
@@ -40,7 +40,7 @@ public class RetailerFrame extends JFrame {
         manageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);

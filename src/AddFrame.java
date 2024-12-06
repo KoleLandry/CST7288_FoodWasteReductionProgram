@@ -43,7 +43,7 @@ public class AddFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
+                setVisible(false);
 
                 //TODO: Add logic to add item to the database
 
