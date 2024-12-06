@@ -35,8 +35,16 @@ public class LoginFrame {
             }
         });
 
+        // Allow the Register button to open the Register page
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginFrame.setVisible(false);
 
-
+                RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
+                retailerFrame.setVisible(true);
+            }
+        });
 
         // Add all the details to the panels
         emailPanel.add(emailLabel);

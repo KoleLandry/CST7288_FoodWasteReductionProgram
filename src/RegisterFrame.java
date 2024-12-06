@@ -2,13 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class RegisterFrame extends JFrame {
-    public RegisterFrame(JFrame registerFrame) {
-
-        //TODO: Get the Register frame to actually load
+    public RegisterFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        registerFrame.setTitle("Food Waste Reduction Platform - Register");
-        registerFrame.setLayout(new BoxLayout(registerFrame.getContentPane(), BoxLayout.Y_AXIS));
+        setTitle("Food Waste Reduction Platform - Register");
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the email panel
         JPanel emailPanel = new JPanel();
@@ -29,7 +27,9 @@ public class RegisterFrame extends JFrame {
         emailPanel.add(enterEmail);
         passPanel.add(passLabel);
         passPanel.add(enterPass);
-        registerFrame.add(registerButton);
+        registerPanel.add(registerButton);
+
+        //TODO: Need to add the ability to choose which type of user you are
 
         // Add the panels to the JFrame
         add(emailPanel);
