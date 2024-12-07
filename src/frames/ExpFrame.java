@@ -1,8 +1,13 @@
 package frames;
 
+import database.DBOperations;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ExpFrame extends JFrame {
     public ExpFrame(JFrame loginFrame, int userId) {
@@ -13,12 +18,12 @@ public class ExpFrame extends JFrame {
 
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
+        JLabel itemNameLabel = new JLabel("Item Name: ");
         JTextField enterItemName = new JTextField(10);
 
         // Create the item expiration date panel
         JPanel itemExpPanel = new JPanel();
-        JLabel itemExpLabel = new JLabel("Item Expiration Date: "); //TODO: Verify that value entered is a date
+        JLabel itemExpLabel = new JLabel("Item Expiration Date: ");
         JTextField enterItemExp = new JTextField(10);
 
         // Create the submit panel
@@ -43,8 +48,20 @@ public class ExpFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                //TODO: Code to get item ID?
-                //updateExpDate(itemId, enterItemQuantity.toString());
+                // get the itemId
+                int itemId = DBOperations.getItemId(enterItemName.getText().trim());
+                Date expDate = null;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
+                try {
+                    String expDateString = enterItemExp.getText().trim();
+                    expDate = new Date(dateFormat.parse(expDateString).getTime());
+                } catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+                DBOperations.updateExpDate(itemId, expDate);
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);

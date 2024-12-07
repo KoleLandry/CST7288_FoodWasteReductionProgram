@@ -46,9 +46,9 @@ public class LoginFrame {
                 // Validate user login input
                 boolean userValid = validation.ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
 
-                if (userValid) {
-                    String userType = getUserType(enterEmail.getText().trim(), enterPass.getText().trim()); // Method to get the user's type
+                if (userValid) {// Method to get the user's type
                     int userId = getUserId(enterEmail.getText().trim(), enterPass.getText().trim()); // Method to get the user's id
+                    String userType = getUserType(userId);
 
                     if (userType != null) {
                         loginFrame.setVisible(false);

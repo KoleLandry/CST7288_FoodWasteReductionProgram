@@ -3,6 +3,9 @@ package frames;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import static database.DBOperations.addFood;
 
@@ -52,10 +55,27 @@ public class AddFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                //TODO: Add logic to add item to the database
-                //If everything is valid..
-                //TODO: Add code to get current user ID
-                //addFood(userId, enterItemName.toString(), enterItemQuantity.toString(), enterItemExp.toString());
+                int itemQuantity;
+
+                Date expDate = null;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                try {
+                    itemQuantity = Integer.parseInt(enterItemQuantity.getText());
+                } catch (NumberFormatException ex) {
+                    // Handle the case where the input is not a valid integer
+                    JOptionPane.showMessageDialog(null, "Please enter a valid quantity.");
+                    return; // Exit if invalid
+                }
+
+                try {
+                    String expDateString = enterItemExp.getText().trim();
+                    expDate = new Date(dateFormat.parse(expDateString).getTime());
+                } catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+                addFood(userId, enterItemName.toString(), itemQuantity, expDate);
                 ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }

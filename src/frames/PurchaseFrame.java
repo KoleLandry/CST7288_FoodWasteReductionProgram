@@ -1,5 +1,7 @@
 package frames;
 
+import database.DBOperations;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,7 +71,11 @@ public class PurchaseFrame extends JFrame {
                 if (itemNameGood == true && itemQuantityGood == true) {
                     setVisible(false);
 
-                    //TODO: Update item in the database
+                    // get the itemId
+                    int itemId = DBOperations.getItemId(enterItemName.getText().trim());
+
+                    int quantity = Integer.parseInt(enterItemQuantity.getText().trim());
+                    DBOperations.updateQuantity(itemId, quantity);
 
                     ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                     manageFrame.setVisible(true);

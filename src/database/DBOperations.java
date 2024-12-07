@@ -1,6 +1,8 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBOperations {
     public static void createUser(String name, String email, String password, String userType) {
@@ -18,13 +20,12 @@ public class DBOperations {
         }
     }
 
-    public static String getUserType(String email, String password) {
+    public static String getUserType(int userId) {
         Connection connection = DBConnection.getConnection();
 
-        String query = "SELECT user_type FROM Users WHERE email = ? AND password = ?";
+        String query = "SELECT user_type FROM Users WHERE user_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, email);
-            stmt.setString(2, password);
+            stmt.setInt(1, userId);
 
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
@@ -54,6 +55,23 @@ public class DBOperations {
         return 0;
     }
 
+    public static int getItemId(String foodName) {
+        Connection connection = DBConnection.getConnection();
+
+        String query = "SELECT inventory_id FROM FoodInventory WHERE food_name = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, foodName);
+
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getInt("inventory_id"); // Return the user type
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
     public static void addFood(Integer retailerId, String foodName, Integer quantity, Date expirationDate) {
         Connection connection = DBConnection.getConnection();
 
@@ -69,32 +87,49 @@ public class DBOperations {
         }
     }
 
-    public static void updateQuantity(Integer itemId, String foodName, Integer quantity) {
+    public static void updateQuantity(Integer itemId, Integer quantity) {
         Connection connection = DBConnection.getConnection();
 
-        String query = "INSERT INTO FoodInventory (inventory_id, food_name, quantity) VALUES (?, ?, ?)";
+        String query = "UPDATE FoodInventory SET quantity = ? WHERE inventory_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, itemId);
-            stmt.setString(2, foodName);
-            stmt.setInt(3, quantity);
+            stmt.setInt(1, quantity);
+            stmt.setInt(2, itemId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static void updateExpDate(Integer itemId, String foodName, Date expirationDate) {
+    public static void updateExpDate(Integer itemId, Date expirationDate) {
         Connection connection = DBConnection.getConnection();
 
-        String query = "INSERT INTO FoodInventory (invantory_id, food_name, expiration_date) VALUES (?, ?, ?)";
+        String query = "UPDATE FoodInventory SET expiration_date = ? WHERE inventory_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setInt(1, itemId);
-            stmt.setString(2, foodName);
-            stmt.setDate(3, expirationDate);
+            stmt.setDate(1, expirationDate);
+            stmt.setInt(2, itemId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static List<String> getRetailers() {
+        List<String> allRetailers = new ArrayList<>();
+
+        Connection connection = DBConnection.getConnection();
+
+        String query = "SELECT retailer_name FROM Users WHERE user_type = 'Retailer'";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                allRetailers.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return allRetailers;
     }
 
     public static void addRating(Integer targetId, Integer userId, Integer ratingValue) {

@@ -1,5 +1,7 @@
 package frames;
 
+import database.DBOperations;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,8 +45,11 @@ public class UpdateFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                //TODO: Code to get item ID?
-                //updateQuantity(itemId, enterItemQuantity.toString());
+                // get the itemId
+                int itemId = DBOperations.getItemId(enterItemName.getText().trim());
+
+                int quantity = Integer.parseInt(enterItemQuantity.getText().trim());
+                DBOperations.updateQuantity(itemId, quantity);
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);

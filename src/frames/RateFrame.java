@@ -1,8 +1,11 @@
 package frames;
 
+import database.DBOperations;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RateFrame extends JFrame {
     public RateFrame(JFrame loginFrame, int userId) {
@@ -13,12 +16,12 @@ public class RateFrame extends JFrame {
 
         // Create the retailer name panel
         JPanel retailerNamePanel = new JPanel();
-        JLabel retailerNameLabel = new JLabel("Retailer Name: "); //TODO: Verify that the retailer exists
+        JLabel retailerNameLabel = new JLabel("Retailer Name: ");
         JTextField enterRetailerName = new JTextField(10);
 
         // Create the rate panel
         JPanel ratePanel = new JPanel();
-        JLabel rateLabel = new JLabel("Rating: "); //TODO: Verify that the rating is between 1 and 5
+        JLabel rateLabel = new JLabel("Rating: ");
         JTextField enterRate = new JTextField(10);
 
         // Create the submit panel
@@ -41,7 +44,44 @@ public class RateFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: Add rating to database
+                // Sends the user from Rate Retailers to Consumer/Char Organization
+                String retailerName = enterRetailerName.getText().trim();
+                String ratingStr = enterRate.getText().trim();
+
+                boolean retailerIsGood = true;
+                boolean ratingIsGood = true;
+
+                List<String> allRetailers = DBOperations.getRetailers();
+                if (!allRetailers.contains(retailerName)) {
+                    JOptionPane.showMessageDialog(RateFrame.this, "Retailer does not exist. Please enter a real retailer.");
+                    retailerIsGood = false;
+                    return;
+                }
+
+                int rating;
+
+                try {
+                    rating = Integer.parseInt(ratingStr);
+                    if (rating < 1 || rating > 5) {
+                        ratingIsGood = false;
+                    }
+                } catch (NumberFormatException ex) {
+                    ratingIsGood = false;
+                }
+
+                if (retailerIsGood && ratingIsGood) {
+                    setVisible(false);
+
+                    String userType = DBOperations.getUserType(userId);
+
+                    if ("consumer".equalsIgnoreCase(userType)) {
+                        ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
+                        consumerFrame.setVisible(true);
+                    } else if ("charitable organization".equalsIgnoreCase(userType)) {
+                        CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
+                        charOrganizationFrame.setVisible(true);
+                    }
+                }
             }
         });
 
@@ -52,12 +92,15 @@ public class RateFrame extends JFrame {
                 // Sends the user from Rate Retailers to Consumer/Char Organization
                 setVisible(false);
 
-                //TODO: If user == consumer:
-                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
-                consumerFrame.setVisible(true);
-                //TODO: Else if user == charOrganization:
-                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame, userId);
-                //charOrganizationFrame.setVisible(true);
+                String userType = DBOperations.getUserType(userId);
+
+                if ("consumer".equalsIgnoreCase(userType)) {
+                    ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
+                    consumerFrame.setVisible(true);
+                } else if ("charitable organization".equalsIgnoreCase(userType)) {
+                    CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
+                    charOrganizationFrame.setVisible(true);
+                }
             }
         });
 

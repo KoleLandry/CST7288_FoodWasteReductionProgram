@@ -14,7 +14,7 @@ public class SurplusFrame extends JFrame {
         // Create the surplus items panel
         JPanel surplusPanel = new JPanel();
         JLabel surplusTitleLabel = new JLabel("Surplus Items: ");
-        JLabel surplusItemsLabel = new JLabel(); //TODO: List array of surplus items here
+        JLabel surplusItemsLabel = new JLabel();
 
         // Create the title panel
         JPanel listPanel = new JPanel();
@@ -23,10 +23,8 @@ public class SurplusFrame extends JFrame {
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
         JLabel itemNameLabel = new JLabel("Item Name: ");
-        JTextField enterItemName = new JTextField(10); //TODO: Verify that item exists, and that it is in surplus
+        JTextField enterItemName = new JTextField(10);
 
-        //TODO: Add ability to choose to set for donation or sale
-        //TODO: Add ability to set price if for sale
 
         // Create the submit panel
         JPanel submitPanel = new JPanel();
@@ -50,8 +48,6 @@ public class SurplusFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-
-                //TODO: Add logic to modify item in the database
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);

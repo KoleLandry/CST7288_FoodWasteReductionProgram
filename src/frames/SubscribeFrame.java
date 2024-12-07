@@ -1,5 +1,7 @@
 package frames;
 
+import database.DBOperations;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,12 +43,15 @@ public class SubscribeFrame extends JFrame {
                 // Sends the user from Subscribe to Alerts to Consumer/Char Organization
                 setVisible(false);
 
-                //TODO: If user == consumer:
-                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
-                consumerFrame.setVisible(true);
-                //TODO: Else if user == charOrganization:
-                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame, userId);
-                //charOrganizationFrame.setVisible(true);
+                String userType = DBOperations.getUserType(userId);
+
+                if ("consumer".equalsIgnoreCase(userType)) {
+                    ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
+                    consumerFrame.setVisible(true);
+                } else if ("charitable organization".equalsIgnoreCase(userType)) {
+                    CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
+                    charOrganizationFrame.setVisible(true);
+                }
             }
         });
 
