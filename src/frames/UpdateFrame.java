@@ -1,12 +1,14 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PurchaseFrame extends JFrame {
-    public PurchaseFrame(JFrame loginFrame) {
+public class UpdateFrame extends JFrame {
+    public UpdateFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Purchase Items");
+        setTitle("Update Items");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel
@@ -39,39 +41,12 @@ public class PurchaseFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                setVisible(false);
 
-                boolean itemNameGood = true;
-                boolean itemQuantityGood = true;
+                //TODO: Update item in the database
 
-                // Verify item exists
-                if (enterItemName.getText().trim().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Item Name cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
-                    itemNameGood = false;
-                    return;
-                }
-
-                // Verify that value entered is an integer
-                try {
-                    int quantity = Integer.parseInt(enterItemQuantity.getText().trim());
-                    if (quantity <= 0) {
-                        JOptionPane.showMessageDialog(null, "Quantity must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
-                        itemQuantityGood = false;
-                        return; // Stop further execution
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Please enter a valid integer for quantity!", "Error", JOptionPane.ERROR_MESSAGE);
-                    itemQuantityGood = false;
-                    return; // Stop further execution
-                }
-
-                if (itemNameGood == true && itemQuantityGood == true) {
-                    setVisible(false);
-
-                    //TODO: Update item in the database
-
-                    ManageFrame manageFrame = new ManageFrame(loginFrame);
-                    manageFrame.setVisible(true);
-                }
+                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                manageFrame.setVisible(true);
             }
         });
 
@@ -79,11 +54,11 @@ public class PurchaseFrame extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Sends the user from Purchase Items to Consumer
+                // Sends the user from Update Quantities to Manage Items
                 setVisible(false);
 
-                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame);
-                purchaseFrame.setVisible(true);
+                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                manageFrame.setVisible(true);
             }
         });
 

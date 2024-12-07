@@ -1,3 +1,5 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +45,7 @@ public class SubscribeFrame extends JFrame {
                 ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame);
                 consumerFrame.setVisible(true);
                 //TODO: Else if user == charOrganization:
-                //CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame);
+                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame);
                 //charOrganizationFrame.setVisible(true);
             }
         });

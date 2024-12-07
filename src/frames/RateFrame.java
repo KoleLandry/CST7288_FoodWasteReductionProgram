@@ -1,23 +1,25 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UpdateFrame extends JFrame {
-    public UpdateFrame(JFrame loginFrame) {
+public class RateFrame extends JFrame {
+    public RateFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Update Items");
+        setTitle("Rate Retailers");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        // Create the item name panel
-        JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
-        JTextField enterItemName = new JTextField(10);
+        // Create the retailer name panel
+        JPanel retailerNamePanel = new JPanel();
+        JLabel retailerNameLabel = new JLabel("Retailer Name: "); //TODO: Verify that the retailer exists
+        JTextField enterRetailerName = new JTextField(10);
 
-        // Create the item quantity panel
-        JPanel itemQuantityPanel = new JPanel();
-        JLabel itemQuantityLabel = new JLabel("Item Quantity: "); //TODO: Verify that value entered is an integer
-        JTextField enterItemQuantity = new JTextField(10);
+        // Create the rate panel
+        JPanel ratePanel = new JPanel();
+        JLabel rateLabel = new JLabel("Rating: "); //TODO: Verify that the rating is between 1 and 5
+        JTextField enterRate = new JTextField(10);
 
         // Create the submit panel
         JPanel submitPanel = new JPanel();
@@ -28,10 +30,10 @@ public class UpdateFrame extends JFrame {
         JButton backButton = new JButton("Back");
 
         // Add all the details to the panels
-        itemNamePanel.add(itemNameLabel);
-        itemNamePanel.add(enterItemName);
-        itemQuantityPanel.add(itemQuantityLabel);
-        itemQuantityPanel.add(enterItemQuantity);
+        retailerNamePanel.add(retailerNameLabel);
+        retailerNamePanel.add(enterRetailerName);
+        ratePanel.add(rateLabel);
+        ratePanel.add(enterRate);
         submitPanel.add(submitButton);
         backPanel.add(backButton);
 
@@ -39,12 +41,7 @@ public class UpdateFrame extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-
-                //TODO: Update item in the database
-
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
-                manageFrame.setVisible(true);
+                //TODO: Add rating to database
             }
         });
 
@@ -52,17 +49,21 @@ public class UpdateFrame extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Sends the user from Update Quantities to Manage Items
+                // Sends the user from Rate Retailers to Consumer/Char Organization
                 setVisible(false);
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
-                manageFrame.setVisible(true);
+                //TODO: If user == consumer:
+                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame);
+                consumerFrame.setVisible(true);
+                //TODO: Else if user == charOrganization:
+                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame);
+                //charOrganizationFrame.setVisible(true);
             }
         });
 
         // Add the panels to the JFrame
-        add(itemNamePanel);
-        add(itemQuantityPanel);
+        add(retailerNamePanel);
+        add(ratePanel);
         add(submitPanel);
         add(backPanel);
 

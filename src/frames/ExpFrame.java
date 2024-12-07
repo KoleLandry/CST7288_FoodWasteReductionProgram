@@ -1,23 +1,20 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddFrame extends JFrame {
-    public AddFrame(JFrame loginFrame) {
+public class ExpFrame extends JFrame {
+    public ExpFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Add Items");
+        setTitle("Set Expiration Dates");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel
         JPanel itemNamePanel = new JPanel();
-        JLabel itemNameLabel = new JLabel("Item Name: ");
+        JLabel itemNameLabel = new JLabel("Item Name: "); //TODO: Verify item exists
         JTextField enterItemName = new JTextField(10);
-
-        // Create the item quantity panel
-        JPanel itemQuantityPanel = new JPanel();
-        JLabel itemQuantityLabel = new JLabel("Item Quantity: "); //TODO: Verify that value entered is an integer
-        JTextField enterItemQuantity = new JTextField(10);
 
         // Create the item expiration date panel
         JPanel itemExpPanel = new JPanel();
@@ -35,8 +32,6 @@ public class AddFrame extends JFrame {
         // Add all the details to the panels
         itemNamePanel.add(itemNameLabel);
         itemNamePanel.add(enterItemName);
-        itemQuantityPanel.add(itemQuantityLabel);
-        itemQuantityPanel.add(enterItemQuantity);
         itemExpPanel.add(itemExpLabel);
         itemExpPanel.add(enterItemExp);
         submitPanel.add(submitButton);
@@ -48,7 +43,7 @@ public class AddFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                //TODO: Add logic to add item to the database
+                //TODO: Update item in the database
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);
@@ -59,7 +54,7 @@ public class AddFrame extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Sends the user from Add Items to Manage Items
+                // Sends the user from Set Expiration Dates to Manage Inventory
                 setVisible(false);
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
@@ -69,7 +64,6 @@ public class AddFrame extends JFrame {
 
         // Add the panels to the JFrame
         add(itemNamePanel);
-        add(itemQuantityPanel);
         add(itemExpPanel);
         add(submitPanel);
         add(backPanel);

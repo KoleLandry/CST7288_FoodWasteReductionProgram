@@ -1,9 +1,11 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConsumerFrame extends JFrame {
-    public ConsumerFrame(JFrame loginFrame) {
+public class CharOrganizationFrame extends JFrame {
+    public CharOrganizationFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
         setTitle("Home");
@@ -18,17 +20,17 @@ public class ConsumerFrame extends JFrame {
         JButton rateButton = new JButton("Rate Retailer");
 
         // Create the claim panel
-        JPanel purchasePanel = new JPanel();
-        JButton purchaseButton = new JButton("Claim Food");
+        JPanel claimPanel = new JPanel();
+        JButton claimButton = new JButton("Claim Food");
 
-        // Create the back panel
+        // Create the logout panel
         JPanel logoutPanel = new JPanel();
         JButton logoutButton = new JButton("Logout");
 
         // Add all the details to the panels
         subscribePanel.add(subscribeButton);
         ratePanel.add(rateButton);
-        purchasePanel.add(purchaseButton);
+        claimPanel.add(claimButton);
         logoutPanel.add(logoutButton);
 
         // Allow the Subscribe button to open the Subscribe page
@@ -54,13 +56,13 @@ public class ConsumerFrame extends JFrame {
         });
 
         // Allow the Claim button to open the Claim page
-        purchaseButton.addActionListener(new ActionListener() {
+        claimButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame);
-                purchaseFrame.setVisible(true);
+                ClaimFrame claimFrame = new ClaimFrame(loginFrame);
+                claimFrame.setVisible(true);
             }
         });
 
@@ -68,7 +70,7 @@ public class ConsumerFrame extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Sends the user from Consumer to Login
+                // Sends the user from Charitable Organization to Login
                 // TODO: Add code to logout the user
                 setVisible(false);
                 loginFrame.setVisible(true);
@@ -78,7 +80,7 @@ public class ConsumerFrame extends JFrame {
         // Add the panels to the JFrame
         add(subscribePanel);
         add(ratePanel);
-        add(purchasePanel);
+        add(claimPanel);
         add(logoutPanel);
 
         setSize(800, 400); // Set the size of the window.

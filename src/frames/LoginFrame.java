@@ -1,3 +1,5 @@
+package frames;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,7 +41,7 @@ public class LoginFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Validate user login input
-                boolean userValid = ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
+                boolean userValid = validation.ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
 
                 if (userValid) {
                     loginFrame.setVisible(false);

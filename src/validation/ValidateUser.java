@@ -1,3 +1,5 @@
+package validation;
+
 public class ValidateUser {
 
     // Method to validate user input (email and password)
