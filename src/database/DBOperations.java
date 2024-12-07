@@ -36,6 +36,34 @@ public class DBOperations {
         }
     }
 
+    public static void updateQuantity(Integer itemId, String foodName, Integer quantity) {
+        Connection connection = DBConnection.getConnection();
+
+        String query = "INSERT INTO FoodInventory (inventory_id, food_name, quantity) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, itemId);
+            stmt.setString(2, foodName);
+            stmt.setInt(3, quantity);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updateExpDate(Integer itemId, String foodName, Date expirationDate) {
+        Connection connection = DBConnection.getConnection();
+
+        String query = "INSERT INTO FoodInventory (invantory_id, food_name, expiration_date) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, itemId);
+            stmt.setString(2, foodName);
+            stmt.setDate(3, expirationDate);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void addRating(Integer targetId, Integer userId, Integer ratingValue) {
         Connection connection = DBConnection.getConnection();
 

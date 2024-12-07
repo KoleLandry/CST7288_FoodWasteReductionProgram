@@ -4,12 +4,19 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static database.DBOperations.createUser;
+
 public class RegisterFrame extends JFrame {
     public RegisterFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
         setTitle("Food Waste Reduction Platform");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+        // Create the name panel
+        JPanel namePanel = new JPanel();
+        JLabel nameLabel = new JLabel("Name: ");
+        JTextField enterName = new JTextField(10);
 
         // Create the email panel
         JPanel emailPanel = new JPanel();
@@ -36,6 +43,8 @@ public class RegisterFrame extends JFrame {
         JButton backButton = new JButton("Back");
 
         // Add all the details to the panels
+        namePanel.add(nameLabel);
+        namePanel.add(enterName);
         emailPanel.add(emailLabel);
         emailPanel.add(enterEmail);
         passPanel.add(passLabel);
@@ -54,6 +63,8 @@ public class RegisterFrame extends JFrame {
                 //TODO: If all user input is valid, create the new user
                 setVisible(false);
 
+                //TODO: set userType to the type of user selected
+                //createUser(enterName.toString(), enterEmail.toString(), String enterPass.toString(), String userType);
                 loginFrame.setVisible(true);
             }
         });
@@ -69,6 +80,7 @@ public class RegisterFrame extends JFrame {
         });
 
         // Add the panels to the JFrame
+        add(namePanel);
         add(emailPanel);
         add(passPanel);
         add(userTypePanel);

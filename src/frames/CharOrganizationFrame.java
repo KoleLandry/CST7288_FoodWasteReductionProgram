@@ -8,7 +8,7 @@ public class CharOrganizationFrame extends JFrame {
     public CharOrganizationFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Home");
+        setTitle("Charitable Organization Dashboard");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the subscribe panel

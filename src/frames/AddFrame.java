@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static database.DBOperations.addFood;
+
 public class AddFrame extends JFrame {
     public AddFrame(JFrame loginFrame) {
 
@@ -51,7 +53,9 @@ public class AddFrame extends JFrame {
                 setVisible(false);
 
                 //TODO: Add logic to add item to the database
-
+                //If everything is valid..
+                //TODO: Add code to get current user ID
+                //addFood(userId, enterItemName.toString(), enterItemQuantity.toString(), enterItemExp.toString());
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);
             }

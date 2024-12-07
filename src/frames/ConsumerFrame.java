@@ -8,7 +8,7 @@ public class ConsumerFrame extends JFrame {
     public ConsumerFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Home");
+        setTitle("Consumer Dashboard");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the subscribe panel

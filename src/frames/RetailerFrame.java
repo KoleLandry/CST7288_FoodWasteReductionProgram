@@ -8,7 +8,7 @@ public class RetailerFrame extends JFrame {
     public RetailerFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Home");
+        setTitle("Retailer Dashboard");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the surplus panel

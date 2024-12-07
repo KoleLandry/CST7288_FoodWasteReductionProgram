@@ -43,7 +43,8 @@ public class UpdateFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                //TODO: Update item in the database
+                //TODO: Code to get item ID?
+                //updateFood(itemId, enterItemQuantity.toString());
 
                 ManageFrame manageFrame = new ManageFrame(loginFrame);
                 manageFrame.setVisible(true);
