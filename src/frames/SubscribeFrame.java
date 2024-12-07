@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class SubscribeFrame extends JFrame {
     public SubscribeFrame(JFrame loginFrame, int userId) {
-        int userId;
 
         // Create the frame for the login window.
         setTitle("Subscribe to Alerts");

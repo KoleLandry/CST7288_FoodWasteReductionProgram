@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class SurplusFrame extends JFrame {
     public SurplusFrame(JFrame loginFrame, int userId) {
-        int userId;
 
         // Create the frame for the login window.
         setTitle("Manage Surplus Items");
