@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class RateFrame extends JFrame {
     public RateFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Rate Retailers - [USER_NAME_HERE]");
+        setTitle("Rate Retailers");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the retailer name panel

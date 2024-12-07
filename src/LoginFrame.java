@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 public class LoginFrame {
     public LoginFrame() {
         // Create the frame for the login window.
-        JFrame loginFrame = new JFrame("Food Waste Reduction Platform - Login");
+        JFrame loginFrame = new JFrame("Food Waste Reduction Platform");
         loginFrame.setLayout(new BoxLayout(loginFrame.getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the email panel

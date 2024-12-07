@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class SurplusFrame extends JFrame {
     public SurplusFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Manage Surplus Items - [USER_NAME_HERE]");
+        setTitle("Manage Surplus Items");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the surplus items panel

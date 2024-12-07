@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class ConsumerFrame extends JFrame {
     public ConsumerFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Home - [USER_NAME_HERE]");
+        setTitle("Home");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the subscribe panel

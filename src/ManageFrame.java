@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class ManageFrame extends JFrame {
     public ManageFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Manage Inventory - [USER_NAME_HERE]");
+        setTitle("Manage Inventory");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the add items panel

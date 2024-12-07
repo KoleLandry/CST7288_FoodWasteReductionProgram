@@ -5,20 +5,31 @@ import java.awt.event.ActionListener;
 public class SubscribeFrame extends JFrame {
     public SubscribeFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Subscribe to Alerts - [USER_NAME_HERE]");
+        setTitle("Subscribe to Alerts");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-        //TODO: Add the ability to set alert options
-        //TODO: Allow the user to choose retailers they will be alerted by
+        // Create the alert options panel
+        JPanel alertPanel = new JPanel();
+        JCheckBox notificationCheckBox = new JCheckBox("Notification");
+        JCheckBox emailCheckBox = new JCheckBox("Email");
+        JCheckBox textCheckBox = new JCheckBox("Text Message");
+
+        // Create the retailer panel
+        JPanel retailerPanel = new JPanel();
+        JLabel retailerLabel = new JLabel("Retailer: "); //TODO: Verify that the Retailer exists
+        JTextField enterRetailer = new JTextField(10);
 
         // Create the back panel
         JPanel backPanel = new JPanel();
         JButton backButton = new JButton("Back");
 
         // Add all the details to the panels
+        alertPanel.add(notificationCheckBox);
+        alertPanel.add(emailCheckBox);
+        alertPanel.add(textCheckBox);
+        retailerPanel.add(retailerLabel);
+        retailerPanel.add(enterRetailer);
         backPanel.add(backButton);
 
         // Allows the back button to send the user to the previous page
@@ -38,6 +49,8 @@ public class SubscribeFrame extends JFrame {
         });
 
         // Add the panels to the JFrame
+        add(alertPanel);
+        add(retailerPanel);
         add(backPanel);
 
 

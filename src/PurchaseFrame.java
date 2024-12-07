@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class PurchaseFrame extends JFrame {
     public PurchaseFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Purchase Items - [USER_NAME_HERE]");
+        setTitle("Purchase Items");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel

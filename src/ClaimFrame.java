@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class ClaimFrame extends JFrame {
     public ClaimFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Claim Items - [USER_NAME_HERE]");
+        setTitle("Claim Items");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel

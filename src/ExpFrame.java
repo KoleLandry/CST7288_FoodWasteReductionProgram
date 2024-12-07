@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class ExpFrame extends JFrame {
     public ExpFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Set Expiration Dates - [USER_NAME_HERE]");
+        setTitle("Set Expiration Dates");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel

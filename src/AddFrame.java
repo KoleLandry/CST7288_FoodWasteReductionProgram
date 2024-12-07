@@ -5,10 +5,8 @@ import java.awt.event.ActionListener;
 public class AddFrame extends JFrame {
     public AddFrame(JFrame loginFrame) {
 
-        //TODO: Display username in the title of the frame
-
         // Create the frame for the login window.
-        setTitle("Add Items - [USER_NAME_HERE]");
+        setTitle("Add Items");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the item name panel

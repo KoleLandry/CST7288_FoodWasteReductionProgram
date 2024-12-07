@@ -6,7 +6,7 @@ public class RegisterFrame extends JFrame {
     public RegisterFrame(JFrame loginFrame) {
 
         // Create the frame for the login window.
-        setTitle("Food Waste Reduction Platform - Register");
+        setTitle("Food Waste Reduction Platform");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         // Create the email panel
