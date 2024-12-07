@@ -5,7 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SurplusFrame extends JFrame {
-    public SurplusFrame(JFrame loginFrame) {
+    public SurplusFrame(JFrame loginFrame, int userId) {
+        int userId;
 
         // Create the frame for the login window.
         setTitle("Manage Surplus Items");
@@ -53,7 +54,7 @@ public class SurplusFrame extends JFrame {
 
                 //TODO: Add logic to modify item in the database
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
@@ -65,7 +66,7 @@ public class SurplusFrame extends JFrame {
                 // Sends the user from Purchase Items to Consumer
                 setVisible(false);
 
-                RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
+                RetailerFrame retailerFrame = new RetailerFrame(loginFrame, userId);
                 retailerFrame.setVisible(true);
             }
         });

@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ManageFrame extends JFrame {
-    public ManageFrame(JFrame loginFrame) {
+    public ManageFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Manage Inventory");
@@ -41,7 +41,7 @@ public class ManageFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                AddFrame addFrame = new AddFrame(loginFrame);
+                AddFrame addFrame = new AddFrame(loginFrame, userId);
                 addFrame.setVisible(true);
             }
         });
@@ -51,7 +51,7 @@ public class ManageFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                UpdateFrame updateFrame = new UpdateFrame(loginFrame);
+                UpdateFrame updateFrame = new UpdateFrame(loginFrame, userId);
                 updateFrame.setVisible(true);
             }
         });
@@ -61,7 +61,7 @@ public class ManageFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                ExpFrame expFrame = new ExpFrame(loginFrame);
+                ExpFrame expFrame = new ExpFrame(loginFrame, userId);
                 expFrame.setVisible(true);
             }
         });
@@ -73,7 +73,7 @@ public class ManageFrame extends JFrame {
                 // Sends the user from Manage Inventory to Retailer
                 setVisible(false);
 
-                RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
+                RetailerFrame retailerFrame = new RetailerFrame(loginFrame, userId);
                 retailerFrame.setVisible(true);
             }
         });

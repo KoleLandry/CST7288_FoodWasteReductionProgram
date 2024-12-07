@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PurchaseFrame extends JFrame {
-    public PurchaseFrame(JFrame loginFrame) {
+    public PurchaseFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Purchase Items");
@@ -71,7 +71,7 @@ public class PurchaseFrame extends JFrame {
 
                     //TODO: Update item in the database
 
-                    ManageFrame manageFrame = new ManageFrame(loginFrame);
+                    ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                     manageFrame.setVisible(true);
                 }
             }
@@ -84,7 +84,7 @@ public class PurchaseFrame extends JFrame {
                 // Sends the user from Purchase Items to Consumer
                 setVisible(false);
 
-                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame);
+                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame, userId);
                 purchaseFrame.setVisible(true);
             }
         });

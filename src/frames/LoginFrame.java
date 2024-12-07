@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static database.DBOperations.getUserId;
+import static database.DBOperations.getUserType;
+
 public class LoginFrame {
     public LoginFrame() {
         // Create the frame for the login window.
@@ -44,10 +47,23 @@ public class LoginFrame {
                 boolean userValid = validation.ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
 
                 if (userValid) {
-                    loginFrame.setVisible(false);
+                    String userType = getUserType(enterEmail.getText().trim(), enterPass.getText().trim()); // Method to get the user's type
+                    int userId = getUserId(enterEmail.getText().trim(), enterPass.getText().trim()); // Method to get the user's id
 
-                    RetailerFrame retailerFrame = new RetailerFrame(loginFrame);
-                    retailerFrame.setVisible(true);
+                    if (userType != null) {
+                        loginFrame.setVisible(false);
+
+                        if ("retailer".equalsIgnoreCase(userType)) {
+                            RetailerFrame retailerFrame = new RetailerFrame(loginFrame, userId);
+                            retailerFrame.setVisible(true);
+                        } else if ("consumer".equalsIgnoreCase(userType)) {
+                            ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
+                            consumerFrame.setVisible(true);
+                        } else if ("charitable organization".equalsIgnoreCase(userType)) {
+                            CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
+                            charOrganizationFrame.setVisible(true);
+                        }
+                    }
                 }
             }
         });

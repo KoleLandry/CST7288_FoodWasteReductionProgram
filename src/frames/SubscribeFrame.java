@@ -5,7 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SubscribeFrame extends JFrame {
-    public SubscribeFrame(JFrame loginFrame) {
+    public SubscribeFrame(JFrame loginFrame, int userId) {
+        int userId;
 
         // Create the frame for the login window.
         setTitle("Subscribe to Alerts");
@@ -42,10 +43,10 @@ public class SubscribeFrame extends JFrame {
                 setVisible(false);
 
                 //TODO: If user == consumer:
-                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame);
+                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
                 consumerFrame.setVisible(true);
                 //TODO: Else if user == charOrganization:
-                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame);
+                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame, userId);
                 //charOrganizationFrame.setVisible(true);
             }
         });

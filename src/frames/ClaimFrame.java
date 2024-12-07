@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ClaimFrame extends JFrame {
-    public ClaimFrame(JFrame loginFrame) {
+    public ClaimFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Claim Items");
@@ -71,8 +71,8 @@ public class ClaimFrame extends JFrame {
 
                     //TODO: Update item in the database
 
-                    ManageFrame manageFrame = new ManageFrame(loginFrame);
-                    manageFrame.setVisible(true);
+                    CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
+                    charOrganizationFrame.setVisible(true);
                 }
             }
         });
@@ -84,7 +84,7 @@ public class ClaimFrame extends JFrame {
                 // Sends the user from Claim Items to Charitable Organization
                 setVisible(false);
 
-                CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame);
+                CharOrganizationFrame charOrganizationFrame = new CharOrganizationFrame(loginFrame, userId);
                 charOrganizationFrame.setVisible(true);
             }
         });

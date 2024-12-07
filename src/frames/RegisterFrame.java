@@ -1,5 +1,7 @@
 package frames;
 
+import validation.ValidateUser;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,13 +61,38 @@ public class RegisterFrame extends JFrame {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: Show error popup if multiple user types are selected
-                //TODO: If all user input is valid, create the new user
-                setVisible(false);
+                // Count how many user types are selected
+                int userTypeNum = 0;
+                if (retailerCheckBox.isSelected()) userTypeNum++;
+                if (charOrganizationCheckBox.isSelected()) userTypeNum++;
+                if (consumerCheckBox.isSelected()) userTypeNum++;
 
-                //TODO: set userType to the type of user selected
-                //createUser(enterName.toString(), enterEmail.toString(), String enterPass.toString(), String userType);
-                loginFrame.setVisible(true);
+                String userType = "";
+
+                // Display an error if more than one user type is selected
+                if (userTypeNum > 1) {
+                    JOptionPane.showMessageDialog(null, "Please select only one user type.", "User Type Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                boolean userValid = ValidateUser.validateLogin(enterEmail.getText().trim(), enterPass.getText().trim());
+
+                if (userValid && userTypeNum == 1) {
+                    setVisible(false);
+
+                    // Determine what type of user they are
+                    if (retailerCheckBox.isSelected()) {
+                        userType = "Retailer";
+                    } else if (charOrganizationCheckBox.isSelected()) {
+                        userType = "Charitable Organization";
+                    } else if (consumerCheckBox.isSelected()) {
+                        userType = "Consumer";
+                    }
+
+                    // Create a user and send back to login page
+                    createUser(enterName.getText(), enterEmail.getText(), new String(enterPass.getPassword()), userType);
+                    loginFrame.setVisible(true);
+                }
             }
         });
 

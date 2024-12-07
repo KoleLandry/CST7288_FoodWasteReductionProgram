@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RetailerFrame extends JFrame {
-    public RetailerFrame(JFrame loginFrame) {
+    public RetailerFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Retailer Dashboard");
@@ -36,7 +36,7 @@ public class RetailerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                SurplusFrame surplusFrame = new SurplusFrame(loginFrame);
+                SurplusFrame surplusFrame = new SurplusFrame(loginFrame, userId);
                 surplusFrame.setVisible(true);
             }
         });
@@ -47,7 +47,7 @@ public class RetailerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
@@ -57,7 +57,6 @@ public class RetailerFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Sends the user from Retailer to Login
-                // TODO: Add code to logout the user
                 setVisible(false);
                 loginFrame.setVisible(true);
             }

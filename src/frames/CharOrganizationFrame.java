@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CharOrganizationFrame extends JFrame {
-    public CharOrganizationFrame(JFrame loginFrame) {
+    public CharOrganizationFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Charitable Organization Dashboard");
@@ -39,7 +39,7 @@ public class CharOrganizationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                SubscribeFrame subscribeFrame = new SubscribeFrame(loginFrame);
+                SubscribeFrame subscribeFrame = new SubscribeFrame(loginFrame, userId);
                 subscribeFrame.setVisible(true);
             }
         });
@@ -50,7 +50,7 @@ public class CharOrganizationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                RateFrame rateFrame = new RateFrame(loginFrame);
+                RateFrame rateFrame = new RateFrame(loginFrame, userId);
                 rateFrame.setVisible(true);
             }
         });
@@ -61,7 +61,7 @@ public class CharOrganizationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                ClaimFrame claimFrame = new ClaimFrame(loginFrame);
+                ClaimFrame claimFrame = new ClaimFrame(loginFrame, userId);
                 claimFrame.setVisible(true);
             }
         });
@@ -71,7 +71,6 @@ public class CharOrganizationFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Sends the user from Charitable Organization to Login
-                // TODO: Add code to logout the user
                 setVisible(false);
                 loginFrame.setVisible(true);
             }

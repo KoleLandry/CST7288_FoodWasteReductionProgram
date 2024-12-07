@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpdateFrame extends JFrame {
-    public UpdateFrame(JFrame loginFrame) {
+    public UpdateFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Update Items");
@@ -44,9 +44,9 @@ public class UpdateFrame extends JFrame {
                 setVisible(false);
 
                 //TODO: Code to get item ID?
-                //updateFood(itemId, enterItemQuantity.toString());
+                //updateQuantity(itemId, enterItemQuantity.toString());
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
@@ -58,7 +58,7 @@ public class UpdateFrame extends JFrame {
                 // Sends the user from Update Quantities to Manage Items
                 setVisible(false);
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });

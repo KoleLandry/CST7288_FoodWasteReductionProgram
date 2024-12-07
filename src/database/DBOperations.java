@@ -1,9 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBOperations {
     public static void createUser(String name, String email, String password, String userType) {
@@ -19,6 +16,42 @@ public class DBOperations {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static String getUserType(String email, String password) {
+        Connection connection = DBConnection.getConnection();
+
+        String query = "SELECT user_type FROM Users WHERE email = ? AND password = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getString("user_type"); // Return the user type
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static int getUserId(String email, String password) {
+        Connection connection = DBConnection.getConnection();
+
+        String query = "SELECT user_id FROM Users WHERE email = ? AND password = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getInt("user_id"); // Return the user type
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     public static void addFood(Integer retailerId, String foodName, Integer quantity, Date expirationDate) {
@@ -80,18 +113,6 @@ public class DBOperations {
 
 
     /*
-
-    -- 4) Ratings Table
-    CREATE TABLE Ratings (
-            rating_id INT PRIMARY KEY AUTO_INCREMENT,
-            retailer_id INT NOT NULL,
-            rater_id INT NOT NULL,
-            rating_value INT CHECK (rating_value BETWEEN 1 AND 5),
-    comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (retailer_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (rater_id) REFERENCES Users(user_id) ON DELETE CASCADE
-);
 
 -- 3) Transactions Table
     CREATE TABLE Transactions (

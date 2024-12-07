@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConsumerFrame extends JFrame {
-    public ConsumerFrame(JFrame loginFrame) {
+    public ConsumerFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Consumer Dashboard");
@@ -39,7 +39,7 @@ public class ConsumerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                SubscribeFrame subscribeFrame = new SubscribeFrame(loginFrame);
+                SubscribeFrame subscribeFrame = new SubscribeFrame(loginFrame, userId);
                 subscribeFrame.setVisible(true);
             }
         });
@@ -50,7 +50,7 @@ public class ConsumerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                RateFrame rateFrame = new RateFrame(loginFrame);
+                RateFrame rateFrame = new RateFrame(loginFrame, userId);
                 rateFrame.setVisible(true);
             }
         });
@@ -61,7 +61,7 @@ public class ConsumerFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
 
-                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame);
+                PurchaseFrame purchaseFrame = new PurchaseFrame(loginFrame, userId);
                 purchaseFrame.setVisible(true);
             }
         });
@@ -71,7 +71,6 @@ public class ConsumerFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Sends the user from Consumer to Login
-                // TODO: Add code to logout the user
                 setVisible(false);
                 loginFrame.setVisible(true);
             }

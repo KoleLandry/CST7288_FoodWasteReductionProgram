@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RateFrame extends JFrame {
-    public RateFrame(JFrame loginFrame) {
+    public RateFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Rate Retailers");
@@ -53,10 +53,10 @@ public class RateFrame extends JFrame {
                 setVisible(false);
 
                 //TODO: If user == consumer:
-                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame);
+                ConsumerFrame consumerFrame = new ConsumerFrame(loginFrame, userId);
                 consumerFrame.setVisible(true);
                 //TODO: Else if user == charOrganization:
-                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame);
+                //frames.CharOrganizationFrame charOrganizationFrame = new frames.CharOrganizationFrame(loginFrame, userId);
                 //charOrganizationFrame.setVisible(true);
             }
         });

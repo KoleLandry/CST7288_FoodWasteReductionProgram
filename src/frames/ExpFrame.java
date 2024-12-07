@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExpFrame extends JFrame {
-    public ExpFrame(JFrame loginFrame) {
+    public ExpFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Set Expiration Dates");
@@ -44,9 +44,9 @@ public class ExpFrame extends JFrame {
                 setVisible(false);
 
                 //TODO: Code to get item ID?
-                //updateFood(itemId, enterItemQuantity.toString());
+                //updateExpDate(itemId, enterItemQuantity.toString());
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
@@ -58,7 +58,7 @@ public class ExpFrame extends JFrame {
                 // Sends the user from Set Expiration Dates to Manage Inventory
                 setVisible(false);
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });

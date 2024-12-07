@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import static database.DBOperations.addFood;
 
 public class AddFrame extends JFrame {
-    public AddFrame(JFrame loginFrame) {
+    public AddFrame(JFrame loginFrame, int userId) {
 
         // Create the frame for the login window.
         setTitle("Add Items");
@@ -56,7 +56,7 @@ public class AddFrame extends JFrame {
                 //If everything is valid..
                 //TODO: Add code to get current user ID
                 //addFood(userId, enterItemName.toString(), enterItemQuantity.toString(), enterItemExp.toString());
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
@@ -68,7 +68,7 @@ public class AddFrame extends JFrame {
                 // Sends the user from Add Items to Manage Items
                 setVisible(false);
 
-                ManageFrame manageFrame = new ManageFrame(loginFrame);
+                ManageFrame manageFrame = new ManageFrame(loginFrame, userId);
                 manageFrame.setVisible(true);
             }
         });
